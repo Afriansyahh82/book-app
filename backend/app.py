@@ -177,6 +177,10 @@ def add_library(book_id):
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
         return response
     book_found = False
+    for lib in library:
+        if lib['book_id'] == book_id and lib['user_id'] == 1:  
+            return jsonify({'error': 'Book already in library'}), 400
+        
     for book in books:
         if book['id'] == book_id:
             book['status'] = 'read'
