@@ -41,6 +41,7 @@ const BrowseLibrary = () => {
     fetchBooks();
   }, []);
 
+
   // Get unique genres from books
   const genres = ['all', ...new Set(books.map(book => book.genre))];
   
@@ -55,7 +56,7 @@ const BrowseLibrary = () => {
   // Handle adding a book to library
   const handleAddBook = async (bookId: number) => {
     try {
-      await api.put(`/api/books/${bookId}`, {
+      await api.put(`/api/library/${bookId}`, {
         status: 'read'
       });
       // Update local state

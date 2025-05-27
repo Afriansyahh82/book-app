@@ -12,18 +12,14 @@ import libdata from '../../../backend/library.json';
 const Index = () => {
   const [activeTab, setActiveTab] = useState('home');
   const [libraryView, setLibraryView] = useState('my-books'); // 'my-books' or 'browse'
-  const [library, setLibrary] = useState([]); // array { user_id, book_id }
-  const [books, setBooks] = useState([]);     // array buku lengkap
-  // const [currentlyReading, setCurrentlyReading] = useState([]);     // array buku lengkap
-
+  const [library, setLibrary] = useState([]); 
+  const [books, setBooks] = useState([]);     
+  
   useEffect(() => {
     setBooks(bookData.books);
     setLibrary(libdata.library);
   }, []);
 
-  console.log("lib : ", library);
-  console.log("book : ", books);
-  
   const renderContent = () => {
     switch (activeTab) {
       case 'library':
@@ -94,9 +90,9 @@ const Index = () => {
             </div>
             <h2 className="text-xl font-bold text-gray-800">Trending Now</h2>
             <div className="space-y-3">
-              {/* {books.slice(3, 8).map((book) => (
+              {books.slice(3, 8).map((book) => (
                 <BookCard key={book.id} book={book} variant="discover" />
-              ))} */}
+              ))}
             </div>
           </div>
         );
@@ -122,7 +118,7 @@ const Index = () => {
               <p className="text-gray-600">Reading enthusiast since 2020</p>
             </div>
             
-            {/* <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="text-center p-4 bg-blue-50 rounded-xl">
                 <div className="text-2xl font-bold text-blue-600">{readingStats.totalBooks}</div>
                 <div className="text-sm text-gray-600">Books Read</div>
@@ -135,7 +131,7 @@ const Index = () => {
                 <div className="text-2xl font-bold text-purple-600">{readingStats.avgRating}</div>
                 <div className="text-sm text-gray-600">Avg Rating</div>
               </div>
-            </div> */}
+            </div>
           </div>
         );
       default:
@@ -143,7 +139,7 @@ const Index = () => {
           <div className="space-y-6">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 text-white">
               <h2 className="text-xl font-bold mb-2">Welcome back!</h2>
-              {/* <p className="opacity-90">You've read {readingStats.pagesThisWeek} pages this week</p> */}
+              <p className="opacity-90">You've read {readingStats.pagesThisWeek} pages this week</p>
               <div className="mt-4 bg-white/20 rounded-full h-2">
                 <div className="bg-white rounded-full h-2 w-3/4"></div>
               </div>
@@ -161,9 +157,9 @@ const Index = () => {
             <div>
               <h3 className="text-lg font-semibold text-gray-800 mb-3">Recommended for You</h3>
               <div className="grid grid-cols-2 gap-3">
-                {/* {books.slice(0, 4).map((book) => (
+                {books.slice(0, 4).map((book) => (
                   <BookCard key={book.id} book={book} variant="compact" />
-                ))} */}
+                ))}
               </div>
             </div>
           </div>
