@@ -56,12 +56,12 @@ const BrowseLibrary = () => {
   const handleAddBook = async (bookId: number) => {
     try {
       await api.put(`/api/books/${bookId}`, {
-        status: 'want-to-read'
+        status: 'read'
       });
       // Update local state
       setBooks(books.map(book => 
         book.id === bookId 
-          ? { ...book, status: 'want-to-read' }
+          ? { ...book, status: 'read' }
           : book
       ));
     } catch (err) {

@@ -1,4 +1,3 @@
-
 export const books = [
   {
     id: 1,
@@ -79,6 +78,17 @@ export const books = [
     pages: 688,
     genre: "Sci-Fi",
     status: "reading" as const
+  },
+  ,
+  {
+    id: 9,
+    title: "The Alchemist",
+    author: "AgATE",
+    cover: "",
+    rating: 4.5,
+    pages: 900,
+    genre: "Sci-Fi",
+    status: "want-to-read" as const
   }
 ];
 

@@ -27,13 +27,24 @@ def load_books():
     except FileNotFoundError:
         return []
 
+def load_lib():
+    try:
+        with open('library.json', 'r') as f:
+            data = json.load(f)
+            return data.get('library', [])
+    except FileNotFoundError:
+        return []
+
 # Save books to JSON file
 def save_books(books_data):
     with open('books.json', 'w') as f:
         json.dump({'books': books_data}, f, indent=2)
-
+def save_lib(libs_data):
+    with open('library.json', 'w') as f:
+        json.dump({'library': libs_data}, f, indent=2)
 # Initialize books from JSON file
 books = load_books()
+library = load_lib()
 
 @app.route('/api/books', methods=['GET', 'OPTIONS'])
 def get_books():
@@ -65,7 +76,7 @@ def add_book():
     return jsonify(book), 201
 
 @app.route('/api/books/<int:book_id>', methods=['PUT', 'OPTIONS'])
-def update_book(book_id):
+def add_library(book_id):
     if request.method == 'OPTIONS':
         # Handle preflight request
         response = jsonify({})
@@ -73,20 +84,25 @@ def update_book(book_id):
         response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
         response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
         return response
-    
-    data = request.json
+    book_found = False
     for book in books:
         if book['id'] == book_id:
-            book['title'] = data.get('title', book['title'])
-            book['author'] = data.get('author', book['author'])
-            book['cover'] = data.get('cover', book['cover'])
-            book['rating'] = data.get('rating', book['rating'])
-            book['pages'] = data.get('pages', book['pages'])
-            book['genre'] = data.get('genre', book['genre'])
-            book['status'] = data.get('status', book['status'])
-            save_books(books)  # Save to JSON file
-            return jsonify(book)
-    return jsonify({'error': 'Book not found'}), 404
+            book['status'] = 'read'
+            book_found = True
+            break
+
+    if not book_found:
+        return jsonify({'error': 'Book not found'}), 404
+
+    new_lib = {
+        'book_id': book_id
+    }
+    library.append(new_lib)
+
+    save_books(books)       # Simpan seluruh list books
+    save_lib(library)       # Simpan library
+    return jsonify({'message': 'Book added to library', 'book_id': book_id}), 200
+
 
 @app.route('/api/books/<int:book_id>', methods=['DELETE'])
 def delete_book(book_id):
