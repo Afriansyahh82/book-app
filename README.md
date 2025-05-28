@@ -1,6 +1,5 @@
-## My Chosen Role
+# My Chosen Role
 Back End
-
 
 # Catatan 
 - Menambahkan user.json, dan library.json
@@ -42,11 +41,7 @@ cara pengujian di postman :
 2. URL 'http://localhost:5001/api/books/'
 3. pada bagian URL, tambahkan '?parameter=value', contoh pengujian di postman : 
 URL : http://localhost:5001/api/books/?status=read
-parameter : 
-- title
-- genre
-- status
-- author
+parameter : (title, genre, status, author)
 
 
 - /api/library/<int:book_id> (PUT)
