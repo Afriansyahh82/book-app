@@ -23,6 +23,18 @@
       "nama": "Rahmat",
       "username": "Rahman",
       "password": "password123"
+    },
+    {
+      "id": 5,
+      "nama": "Rian",
+      "username": "rian1234",
+      "password": "pass1234"
+    },
+    {
+      "id": 6,
+      "nama": "Adit",
+      "username": "adit1234",
+      "password": "pass1234"
     }
   ]
 }

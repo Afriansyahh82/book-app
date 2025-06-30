@@ -1,0 +1,25 @@
+### Register user baru
+POST http://localhost:5001/register
+Content-Type: application/json
+
+{
+  "id": 5,
+  "nama": "Adit",
+  "username": "adit1234",
+  "password": "pass1234"
+}
+
+### Login
+POST http://localhost:5001/login
+Content-Type: application/json
+
+{
+  "username": "adit1234",
+  "password": "pass1234"
+}
+
+### Cari buku dengan status = read
+GET http://localhost:5001/api/books/?status=read
+
+### Tambah buku ke library dengan book_id = 1
+PUT http://localhost:5001/api/library/6
