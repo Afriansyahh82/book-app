@@ -3,7 +3,7 @@ POST http://localhost:5001/register
 Content-Type: application/json
 
 {
-  "id": 5,
+  "id": 6,
   "nama": "Adit",
   "username": "adit1234",
   "password": "pass1234"
