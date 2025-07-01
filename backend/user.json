@@ -35,6 +35,18 @@
       "nama": "Adit",
       "username": "adit1234",
       "password": "pass1234"
+    },
+    {
+      "id": 7,
+      "nama": null,
+      "username": "afriansyah321",
+      "password": "pass123"
+    },
+    {
+      "id": 8,
+      "nama": "Afriansyah Idris",
+      "username": "afriansyah123",
+      "password": "pass123"
     }
   ]
 }
